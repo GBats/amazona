@@ -32,8 +32,6 @@ const reducer = combineReducers({
   productDelete:productDeleteReducer,
   orderCreate:orderCreateReducer,
   orderDetails:orderDetailsReducer,
-
- 
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

@@ -1,31 +1,23 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createOrder, detailsOrder, payOrder } from '../actions/orderActions';
+import {detailsOrder } from '../actions/orderActions';
 function OrderScreen(props) {
-
-  const orderPay = useSelector(state => state.orderPay);
-  const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (successPay) {
-      props.history.push("/profile");
-    } else {
-      dispatch(detailsOrder(props.match.params.id));
-    }
-    return () => {
-    };
-  }, [successPay]);
-
-
-
   const orderDetails = useSelector(state => state.orderDetails);
   const { loading, order, error } = orderDetails;
+
+  const dispatch = useDispatch();
+
+   useEffect(()=>{
+      dispatch(detailsOrder(props.match.params.id))
+    return ()=>{
+      //
+    }
+   },[])
 
   const payHandler=()=>{}
 
   return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
-
     <div>
       <div className="placeorder">
         <div className="placeorder-info">
@@ -64,6 +56,7 @@ function OrderScreen(props) {
                 order.orderItems.length === 0 ?
                   <div>
                     Cart is empty
+                    
           </div>
                   :
                   order.orderItems.map(item =>
