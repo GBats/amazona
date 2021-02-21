@@ -399,3 +399,7 @@ tbody > tr:nth-child(odd) {
 .placeorder-actions-payment > div {
   width: 100%;
 }
+
+.placeorder-action-payment > div {
+  width:100%;
+}
